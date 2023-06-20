@@ -5,35 +5,35 @@ const restaurantsSchema = new Schema({
     type: String, // 資料型別是字串
     required: true // 這是個必填欄位
   },
-  name_en:{
+  name_en: {
     type: String // 資料型別是字串
   },
-  category:{
+  category: {
     type: String, // 資料型別是字串
     required: true // 這是個必填欄位
   },
-  image:{
+  image: {
     type: String, // 資料型別是字串
     required: true // 這是個必填欄位
   },
-  location:{
+  location: {
     type: String, // 資料型別是字串
     required: true // 這是個必填欄位
   },
-  phone:{
-    type: String , // 資料型別是字串
+  phone: {
+    type: String, // 資料型別是字串
     required: true // 這是個必填欄位
   },
-  google_map:{
-    type: String , // 資料型別是字串
+  google_map: {
+    type: String, // 資料型別是字串
     required: true // 這是個必填欄位
   },
-  rating:{
+  rating: {
     type: Number,
     required: true // 這是個必填欄位
   },
-  description:{
-    type: String , // 資料型別是字串
+  description: {
+    type: String, // 資料型別是字串
     required: true // 這是個必填欄位
   }
 })

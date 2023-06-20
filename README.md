@@ -2,8 +2,6 @@ Restaurant list
 =
 A few restaurants here and you can look for some information
 
-
-20230619 router finishing
 Function 
 --
 * Can get details of restaurant by cklicking it
