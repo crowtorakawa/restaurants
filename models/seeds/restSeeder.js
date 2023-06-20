@@ -1,24 +1,9 @@
-// const express = require('express')
-// const mongoose = require('mongoose')//
-// const port = 3000
-
 const jsonData = require('../../restaurant.json')
-
-// const exphbs = require('express-handlebars')
 
 const restaurants = require('../restaurants')
 
 const db = require('../../config/mongoose')
-// const db  = mongoose.connection
-// if(process.env.NODE_ENV !== 'production'){
-//     require('dotenv').config()
-// }
-// // const app = express()
-// mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
-// db.on('error',()=>{
-//     console.log('mongodb error')
-// })
 db.once('open', () => {
   for (var i in jsonData.results) {
     restaurants.create({

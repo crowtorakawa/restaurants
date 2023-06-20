@@ -1,11 +1,11 @@
 const port = 3000
 const express = require('express')
 // const restaurants = require('./restaurant.json') 原json檔案
-// const mongoose = require('mongoose')
+
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const bodyparser = require('body-parser')
-// const Rest = require('./models/restaurants')
+
 const app = express()
 const routes = require('./routes')
 require('./config/mongoose')

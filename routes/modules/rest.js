@@ -47,61 +47,8 @@ router.put('/:rest_id', (req, res) => {
   Rest.findOneAndUpdate(filter, update)
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(err => console.log(err))
-  //  Rest.findById(id)
-  //     .then(rest => {
-  //         rest = req.body
-  //         rest.name =req.body.name
-  //         rest.name_en =req.body.name_en
-  //         rest.category =req.body.category
-  //         rest.image =req.body.image
-  //         rest.location =req.body.location
-  //         rest.phone =req.body.phone
-  //         rest.google_map =req.body.google_map
-  //         rest.rating =req.body.rating
-  //         rest.description =req.body.description
-  //         return rest.save()
-  //     })
-  //     .then(() => res.redirect(`/restaurants/${id}`))
-  //     .catch(error => console.log(error))
 })
-// /////////////////////////////////////////////////////////////////// search
-// router.get('/search', (req, res) => {
-//   const keyword = req.query.keyword
-//   const keywords = req.query.keyword.toLowerCase().trim()
-//   if (!keyword) {
-//     return res.redirect('/')
-//   }
-//   console.log(keyword)
-//   // const nameSearch = Rest.filter(rest=> {
-//   //     return rest.name.includes(keyword)
-//   // })
-//   // let object = { ...categorySearch, ...nameSearch};
-//   // console.log(object)
-//   // return Rest.filter()
-//   // .lean()
-//   // .then((rests) => res.render('edit',{ rests }))
-//   // .catch(error => console.log(error))
 
-//   Rest.find()
-//     .lean()
-//     .then(rests => {
-//       const filteredRestaurants = rests.filter(
-//         ({ name, name_en, category }) =>
-//           name.toLowerCase().includes(keyword) ||
-//           name_en.toLowerCase().includes(keyword) ||
-//               category.includes(keyword)
-//       )
-//       const object = filteredRestaurants.length === 0 ? '' : 'index'
-//       return res.render(object, { rests: filteredRestaurants, keywords })
-//     })
-//     // res.render('index',{rests})
-//     .catch(error => console.error(error))
-//     // res.render('index', {rests: object })
-// })
-
-// app.get('/restaurants/new' , (req,res)=>{
-//     return res.render('new')
-// })
 router.delete('/:rest_id', (req, res) => {
   const id = req.params.rest_id
   return Rest.findById(id)

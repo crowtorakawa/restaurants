@@ -23,15 +23,6 @@ router.get('/search', (req, res) => {
   }
   console.log(keyword)
   console.log(sort)
-  // const nameSearch = Rest.filter(rest=> {
-  //     return rest.name.includes(keyword)
-  // })
-  // let object = { ...categorySearch, ...nameSearch};
-  // console.log(object)
-  // return Rest.filter()
-  // .lean()
-  // .then((rests) => res.render('edit',{ rests }))
-  // .catch(error => console.log(error))
 
   Rest.find()
     .lean()
