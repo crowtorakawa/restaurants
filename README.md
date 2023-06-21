@@ -1,11 +1,12 @@
 Restaurant list
-=
+--
 A few restaurants here and you can look for some information
 
 Function 
 --
 * Can get details of restaurant by cklicking it
 * Can search restaurant by entering keyword in search bar
+* can sort for choice method
 
 
 Development tool
