@@ -5,7 +5,7 @@ const restaurants = require('../restaurants')
 const db = require('../../config/mongoose')
 
 db.once('open', () => {
-  for (var i in jsonData.results) {
+  for (let i in jsonData.results) {
     restaurants.create({
       name: `${jsonData.results[i].name}`,
       name_en: `${jsonData.results[i].name_en}`,
