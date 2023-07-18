@@ -3,13 +3,18 @@ const router = express.Router()
 // 引用 Express 與 Express 路由器
 const Rest = require('../../models/restaurants')
 // 引用 餐廳的 model
-const sortMethod = [{ _id: 'asc' }, { name: 'asc' }, { name: 'desc' }, { category: 'asc' }, { rating: 'desc' }, { rating: 'asc' }]
+const sortMethod = [{ _id: 'asc' }, { name: 'asc' }, { name: 'desc' }, { category: 'asc' }, { rating: 'desc' }, { rating: 'asc' }
+]
 
 router.get('/', (req, res) => {
-  Rest.find()
+  const userId = req.user._id
+  Rest.find({ userId })
     .lean()
     .sort({ name: 'asc' })
-    .then(rests => res.render('index', { rests }))
+    .then(rests => {
+      console.log(rests)
+      res.render('index', { rests })
+    })
     .catch(error => console.error(error))
     // res.render('index',{restaurants: restaurants.results})
 })
@@ -18,13 +23,14 @@ router.get('/search', (req, res) => {
   const keyword = req.query.keyword
   const keywords = req.query.keyword.toLowerCase().trim()
   const sort = req.query.sort
+  const userId = req.user._id
   if (!keyword) {
     return res.redirect('/')
   }
   console.log(keyword)
   console.log(sort)
 
-  Rest.find()
+  Rest.find({ userId })
     .lean()
     .sort(sortMethod[sort])
     .then(rests => {

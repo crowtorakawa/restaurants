@@ -11,10 +11,15 @@ router.get('/new', (req, res) => {
 
 router.get('/:rest_id', (req, res) => {
   console.log(req.params.rest_id)
-  const id = req.params.rest_id
-  return Rest.findById(id)
+  const _id = req.params.rest_id
+  const userId = req.user._id
+
+  return Rest.findOne({ _id, userId })
     .lean()
-    .then((rests) => res.render('show', { rests }))
+    .then(rests => {
+      console.log(rests)
+      res.render('show', { rests })
+    })
     .catch(error => console.log(error))
     // const rests = Rest.find(
     //     rests => rest.id.toString() === req.params.rest_id
@@ -23,35 +28,56 @@ router.get('/:rest_id', (req, res) => {
 })
 
 router.get('/:rest_id/edit', (req, res) => {
-  const id = req.params.rest_id
-  return Rest.findById(id)
+  const _id = req.params.rest_id
+  const userId = req.user._id
+
+  return Rest.findOne({ _id, userId })
     .lean()
     .then((rests) => res.render('edit', { rests }))
     .catch(error => console.log(error))
 })
 
 router.post('/', (req, res) => {
-  const news = req.body
-  console.log(news)
-  Rest.create(news) // 存入資料庫
+  const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
+  const userId = req.user._id
+  // news['userId'] = userId
+  // console.log(news)
+  return Rest.create({ name, name_en, category, image, location,phone, google_map, rating, description, userId }) // 存入資料庫
     .then(() => res.redirect('/')) // 新增完成後導回首頁
     .catch(error => console.log(error))
 })
 
 router.put('/:rest_id', (req, res) => {
-  const id = req.params.rest_id
-  // const name = req.body.name_en
+  const _id = req.params.rest_id
+  const userId = req.user._id
+  const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
 
-  const filter = { _id: id }
-  const update = req.body
-  Rest.findOneAndUpdate(filter, update)
-    .then(() => res.redirect(`/restaurants/${id}`))
+  return Rest.findOne({ _id, userId })
+    .then(rests => {
+      rests.name = name
+      rests.name_en = name_en
+      rests.category = category
+      rests.image = image
+      rests.location = location
+      rests.phone = phone
+      rests.google_map = google_map
+      rests.rating = rating
+      rests.description = description
+      return rests.save()
+    })
+    .then(() => res.redirect(`/restaurants/${_id}`))
     .catch(err => console.log(err))
+//   Rest.findOneAndUpdate({ _id, update, userId })
+//     .then(() => res.redirect(`/restaurants/${_id}`))
+//     .catch(err => console.log(err))
+// })
 })
 
 router.delete('/:rest_id', (req, res) => {
-  const id = req.params.rest_id
-  return Rest.findById(id)
+  const _id = req.params.rest_id
+  const userId = req.user._id
+
+  return Rest.findById({ _id, userId })
     .then(rests => rests.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
