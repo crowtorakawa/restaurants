@@ -9,32 +9,44 @@ Function
 * can sort for choice method
 
 
-Development tool
+Development tool 
 --
 * VScode
 * Node.js (18.16.0)
-* Express (4.16.4)
-* Express-handlebars (3.0.0)
+* Express (4.17.1)
+* Express-handlebars (4.0.2)
+* express-session (1.17.1)
+* method-override (3.0.0)
+* mongoose (5.9.7)
+* passport (0.4.1)
+    * passport-facebook (3.0.0)
+    * passport-local (1.0.0)
 
 # 美食搜尋網站專案
 
 ## 專案畫面
 主畫面
 ![image](/%E8%8F%9C%E5%96%AE%E9%A6%96%E9%A0%81.png)
-點選頁
-![image](/%E9%BB%9E%E9%81%B8%E9%A0%81.png)
-搜尋頁
-![image](/%E6%90%9C%E5%B0%8B%E9%A0%81.png)
+登入頁
+![image][(/%E7%99%BB%E5%85%A5.png)]
+註冊頁
+![image](/%E8%A8%BB%E5%86%8A.png)
 
 ## Features - 產品功能
 
-一個使用 Node.js + Express 打造的餐廳美食網站，現階段功能如下：
-    1.可依照餐廳"名稱"與"類別"進行搜尋
-
+現階段功能如下：
+    1.使用者可以在首頁查看所有餐廳的簡易資料
+    2.使用者可以點擊有興趣的餐廳，並獲得更詳細的資訊
+    3.使用者可以透過搜尋餐廳名稱、分類來找到特定的餐廳
+    4.使用者可以新增一家餐廳
+    5.使用者可以修改一家餐廳的資訊
+    6.使用者可以刪除一家餐廳
+    7.使用者可以註冊帳號或用臉書帳號登入
+    8.密碼經過bcrypt加密
 
 ## Environment SetUp - 環境建置
 
-2. [Node.js](https://nodejs.org/en/)
+1. [Node.js](https://nodejs.org/en/)
 
 ## Installing - 專案安裝流程
 
@@ -53,30 +65,38 @@ cd restaurantList
 3. 安裝 npm 套件
 
 ```
-在 Terminal 輸入 npm install 指令
+npm install 
 ```
 
-4. 安裝 nodemon 套件
-
+4. 安裝 nodemon 套件，terminal輸入
 ```
-在 Terminal 輸入 nodemon app.js 指令
+npm install -g nodemon
 ```
 
-
-6. 啟動伺服器，執行 app.js 檔案
+5. 啟動伺服器，執行 app.js 檔案
 
 ```
 nodemon app.js
 ```
 
-7. 當 terminal 出現以下字樣，表示伺服器與資料庫已啟動並成功連結
-
+6. 參考 .env.example，建立 .env檔案
+7. 匯入種子資料，terminal輸入
 ```
-The Express server is running on http://localhost:3000
-
+npm run seed
 ```
-可開啟任一瀏覽器瀏覽器輸入 [http://localhost:3000](http://localhost:3000)
+8. 執行檔案，terminal輸入
+```
+npm run dev
+```
+當 terminal 出現以下字樣，表示伺服器已啟動並成功連結
+mongodb connected!
+Express is listening on http://localhost:3000
 
+9. 登入可用下列預設帳密
+```
+email: user1@example.com
+password: 12345678
+email: user2@example.com
+password: 12345678
+```
 
-
-> [Pierce Shih](https://github.com/crowtorakawa)
