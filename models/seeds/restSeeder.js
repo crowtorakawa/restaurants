@@ -1,7 +1,3 @@
-// db.once('open', () => {
-
-//   console.log('mongodb connected!')
-// })
 const jsonData = require('../../restaurant.json')
 
 const bcrypt = require('bcryptjs')
@@ -25,11 +21,8 @@ db.once('open', () => {
     }))
     .then(user => {
       const userId = user._id
-      // for (let i = 0; i < 10; i++) {
-      //   restaurants.create({ name: `name-${i}`, userId })
-      // }
       return Promise.all(Array.from(
-        {length: jsonData.results.length},
+        { length: jsonData.results.length },
         (_, i) =>
           restaurants.create({
             name: `${jsonData.results[i].name}`,

@@ -1,19 +1,19 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const userSchema = new Schema({
-  name: {
+  name: { // 使用者姓名
     type: String,
     required: false
   },
-  email: {
+  email: { // 使用者email
     type: String,
     required: true
   },
-  password: {
+  password: { // 使用者password
     type: String,
     required: true
   },
-  createdAt: {
+  createdAt: { // 建立時間
     type: Date,
     default: Date.now
   }
