@@ -10,14 +10,13 @@ router.get('/new', (req, res) => {
 })
 
 router.get('/:rest_id', (req, res) => {
-  console.log(req.params.rest_id)
   const _id = req.params.rest_id
   const userId = req.user._id
 
   return Rest.findOne({ _id, userId })
     .lean()
     .then(rests => {
-      console.log(rests)
+      // console.log(rests)
       res.render('show', { rests })
     })
     .catch(error => console.log(error))
@@ -40,8 +39,6 @@ router.get('/:rest_id/edit', (req, res) => {
 router.post('/', (req, res) => {
   const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
   const userId = req.user._id
-  // news['userId'] = userId
-  // console.log(news)
   return Rest.create({ name, name_en, category, image, location,phone, google_map, rating, description, userId }) // 存入資料庫
     .then(() => res.redirect('/')) // 新增完成後導回首頁
     .catch(error => console.log(error))

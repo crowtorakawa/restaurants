@@ -12,11 +12,9 @@ router.get('/', (req, res) => {
     .lean()
     .sort({ name: 'asc' })
     .then(rests => {
-      console.log(rests)
       res.render('index', { rests })
     })
     .catch(error => console.error(error))
-    // res.render('index',{restaurants: restaurants.results})
 })
 // 首頁路由
 router.get('/search', (req, res) => {
@@ -27,9 +25,6 @@ router.get('/search', (req, res) => {
   if (!keyword) {
     return res.redirect('/')
   }
-  console.log(keyword)
-  console.log(sort)
-
   Rest.find({ userId })
     .lean()
     .sort(sortMethod[sort])
@@ -47,5 +42,4 @@ router.get('/search', (req, res) => {
     .catch(error => console.error(error))
     // res.render('index', {rests: object })
 })
-
 module.exports = router
